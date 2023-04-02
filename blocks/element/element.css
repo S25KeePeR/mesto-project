@@ -1,0 +1,13 @@
+.element {
+  margin:  0;
+  padding: 0;
+  width: 282px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+

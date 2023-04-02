@@ -1,0 +1,18 @@
+.main {
+  margin: 40px auto 0;
+  max-width: 880px;
+
+}
+
+@media screen and (max-width: 960px){
+  .main {
+    margin: 40px 40px 0;
+  }
+}
+
+@media screen and (max-width: 780px){
+  .main {
+    margin: 42px 19px 0;
+  }
+}
+

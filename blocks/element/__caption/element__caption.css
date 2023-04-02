@@ -1,0 +1,8 @@
+.element__caption {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
