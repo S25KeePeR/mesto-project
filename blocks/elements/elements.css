@@ -1,5 +1,5 @@
 .elements {
-  margin: 51px auto 0;
+  padding-top: 51px;
   display: grid;
   grid-gap: 20px 17px;
   grid-template-columns: repeat(3, auto);
@@ -16,8 +16,7 @@
 }
 @media screen and (max-width: 620px){
   .elements {
-    margin: 36px auto 0;
+    padding-top: 36px;
     grid-template-columns: auto;
-    justify-content: space-evenly;
   }
 }

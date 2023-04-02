@@ -1,18 +1,20 @@
 .main {
-  margin: 40px auto 0;
+  padding: 40px 0 0;
+  width: 100%;
   max-width: 880px;
-
+  min-width: 320px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 960px){
   .main {
-    margin: 40px 40px 0;
+    padding: 40px 40px 0;
   }
 }
 
 @media screen and (max-width: 780px){
   .main {
-    margin: 42px 19px 0;
+    padding: 42px 19px 0;
   }
 }
 
