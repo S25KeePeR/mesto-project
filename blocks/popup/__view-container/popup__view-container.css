@@ -1,0 +1,8 @@
+.popup__view-container {
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+}
