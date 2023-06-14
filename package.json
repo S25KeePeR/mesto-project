@@ -1,0 +1,31 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "* [Ссылка на страницу GitHub Pages](https://s25keeper.github.io/mesto-project/) * [Ссылка на репозиторий GitHub](https://github.com/S25KeePeR/mesto-project) * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212-212&t=Z6wuhtMRQ3HQ1OQu-0)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "author": "Alexey Sokolov",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.30.2",
+    "jquery": "^3.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "webpack": "^5.85.1",
+    "webpack-cli": "^5.1.3",
+    "webpack-dev-server": "^4.15.0"
+  }
+}
