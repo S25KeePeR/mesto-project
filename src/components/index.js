@@ -24,7 +24,7 @@ const buttonOpenEditProfileForm = container.querySelector('.profile__edit-button
 const buttonOpenAddCardForm = container.querySelector('.profile__add-button');
 
 // popup Profile
-const popupProfileForm = popupProfile.querySelector('.popup__form');
+const formEditProfile = popupProfile.querySelector('.popup__form');
 const popupInputName = popupProfile.querySelector('.popup__input_type_name');
 const popupInputAbout = popupProfile.querySelector('.popup__input_type_about');
 
@@ -39,20 +39,20 @@ initialCards.forEach(renderCard);
 // Кнопки на сайте
 // Событие по кнопке buttonEdit
 buttonOpenEditProfileForm.addEventListener('click', () => {
-  openPopup(popupProfile);
+  openPopup(popupProfile, validationSettings);
   popupInputName.value = profileName.textContent;
   popupInputAbout.value = profileAbout.textContent;
 });
 
 // Событие по кнопке buttonAdd
 buttonOpenAddCardForm.addEventListener('click', () => {
-  openPopup(popupAdd);
+  openPopup(popupAdd, validationSettings);
   formAddCard.reset();
 });
 
 // Кнопки submit в popup
 // Обработка submit в popupProfile
-popupProfileForm.addEventListener('submit', () => {
+formEditProfile.addEventListener('submit', () => {
   profileName.textContent = popupInputName.value;
   profileAbout.textContent = popupInputAbout.value;
   closePopup(popupProfile);

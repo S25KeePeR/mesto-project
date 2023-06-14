@@ -1,4 +1,3 @@
-
 // включение валидации для всех форм на сайте
 function enableValidation(config) {
   const formsList = document.querySelectorAll(config.formSelector);
@@ -73,9 +72,21 @@ function  setSubmitButtonState(form, config) {
   const isValid = form.checkValidity();
   if (isValid) {
     button.classList.remove(config.inactiveButtonClass);
+    button.removeAttribute("disabled");
   } else {
     button.classList.add(config.inactiveButtonClass);
+    button.setAttribute("disabled", "disabled");
   }
 }
 
-export { enableValidation, searchErrorPlace, hideInputError };
+function resetError(popup, config) {
+  const form = popup.querySelector(config.formSelector);
+  const inputsList = form.querySelectorAll(config.inputSelector);
+  inputsList.forEach(input => {
+    let errorPlace = searchErrorPlace(input);
+    hideInputError(input, errorPlace, config);
+  });
+  setSubmitButtonState(form, config);
+}
+
+export { enableValidation, resetError };
