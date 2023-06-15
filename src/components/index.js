@@ -15,7 +15,7 @@ import { container, popupProfile, popupAdd } from './utils.js';
 import { openPopup, closePopup } from './modal.js';
 import { renderCard } from './card.js';
 import { initialCards } from './constants.js';
-import { enableValidation } from './validate.js';
+import { enableValidation, resetError } from './validate.js';
 
 // Поля и кнопки блока Profile
 const profileName = container.querySelector('.profile__title');
@@ -39,15 +39,18 @@ initialCards.forEach(renderCard);
 // Кнопки на сайте
 // Событие по кнопке buttonEdit
 buttonOpenEditProfileForm.addEventListener('click', () => {
-  openPopup(popupProfile, validationSettings);
+  formEditProfile.reset();
+  resetError(popupProfile, validationSettings);
+  openPopup(popupProfile);
   popupInputName.value = profileName.textContent;
   popupInputAbout.value = profileAbout.textContent;
 });
 
 // Событие по кнопке buttonAdd
 buttonOpenAddCardForm.addEventListener('click', () => {
-  openPopup(popupAdd, validationSettings);
   formAddCard.reset();
+  resetError(popupAdd, validationSettings);
+  openPopup(popupAdd);
 });
 
 // Кнопки submit в popup
@@ -77,6 +80,3 @@ const validationSettings = {
 
 // Включение валидации
 enableValidation(validationSettings);
-
-
-

@@ -1,13 +1,8 @@
 import { container } from "./utils.js";
-import { resetError } from "./validate.js";
 
 // Popup
 // Функция открытия popup
-const openPopup = (popup, config = undefined) => {
-  // cleanPopup(popup);
-  if (config !== undefined) {
-    resetError(popup, config);
-  };
+const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupOnPressKey);
   popup.addEventListener('click', closePopupOnClickOverlay);
@@ -36,19 +31,5 @@ const closePopupOnClickOverlay = (e) => {
     closePopup(e.currentTarget);
   }
 }
-
-// function cleanPopup(popup) {
-//   if (popup.querySelector(validationSettings.formSelector) !== null) {
-//     const form = popup.querySelector(validationSettings.formSelector);
-//     const inputsList = form.querySelectorAll(validationSettings.inputSelector);
-//     inputsList.forEach(input => {
-//       let errorPlace = searchErrorPlace(input);
-//       hideInputError(input, errorPlace, validationSettings);
-//     });
-//     const button = form.querySelector(validationSettings.submitButtonSelector);
-//     button.classList.add(validationSettings.inactiveButtonClass);
-//   }
-// }
-
 
 export { openPopup, closePopup };
