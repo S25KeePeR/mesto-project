@@ -2,7 +2,7 @@
 import '../pages/index.css';
 
 // Импорт модулей JS
-import { container, popupProfile, profileId, popupAdd, popupAvatar } from './utils.js';
+import { container, popupProfile, profileId, popupAdd, popupAvatar, renderLoading } from './utils.js';
 import { openPopup, closePopup } from './modal.js';
 import { renderCard } from './card.js';
 import { enableValidation, resetError } from './validate.js';
@@ -35,23 +35,24 @@ const popupInputPlace = popupAdd.querySelector('.popup__input_type_place');
 const popupInputLink = popupAdd.querySelector('.popup__input_type_link');
 const popupButtonCard = popupAdd.querySelector('.popup__submit-btn');
 
+const setUserInfo = (userData) => {
+  profileName.textContent = userData.name;
+  profileAbout.textContent = userData.about;
+  profileAvatar.src = userData.avatar;
+  profileId.dataset.userId = userData._id;
+}
 
-
+// Получение данных пользователя и добавление карточек на сайт
 getProfileInfo()
   .then((result) => {
-    profileName.textContent = result.name;
-    profileAbout.textContent = result.about;
-    profileAvatar.src = result.avatar;
-    profileId.dataset.userId = result._id;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-// Добавление карточек
-getInitialCards()
-  .then((result) => {
-    result.reverse().forEach(renderCard);
+    setUserInfo(result);
+    getInitialCards()
+      .then((result) => {
+        result.reverse().forEach(renderCard);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   })
   .catch((err) => {
     console.log(err);
@@ -63,7 +64,6 @@ buttonOpenEditAvatarForm.addEventListener('click', () => {
   formEditAvatar.reset();
   resetError(popupAvatar, validationSettings);
   openPopup(popupAvatar);
-  popupInputLinkAvatar.value = profileAvatar.src;
 });
 
 // Событие по кнопке buttonEdit
@@ -83,32 +83,20 @@ buttonOpenAddCardForm.addEventListener('click', () => {
 });
 
 // Кнопки submit в popup
-const loadText = 'Сохранение...';
-let oldText = '';
-function renderLoading(buttonName) {
-  if (buttonName.textContent !== loadText) {
-    oldText = buttonName.textContent;
-    buttonName.textContent = loadText;
-  } else {
-    buttonName.textContent = oldText;
-  }
-}
-
 // Обработка submit в popupAvatar
 formEditAvatar.addEventListener('submit', () => {
   renderLoading(popupButtonAvatar);
   postProfileAvatar(popupInputLinkAvatar.value)
     .then((result) => {
       profileAvatar.src = result.avatar;
+      closePopup(popupAvatar);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      // closePopup(popupAvatar);
       renderLoading(popupButtonAvatar);
     });
-  closePopup(popupAvatar);
 });
 
 // Обработка submit в popupProfile
@@ -119,6 +107,7 @@ formEditProfile.addEventListener('submit', () => {
       profileName.textContent = result.name;
       profileAbout.textContent = result.about;
       profileAvatar.src = result.avatar;
+      closePopup(popupProfile);
     })
     .catch((err) => {
       console.log(err);
@@ -126,7 +115,6 @@ formEditProfile.addEventListener('submit', () => {
     .finally(() => {
       renderLoading(popupButtonProfile);
     });
-  closePopup(popupProfile);
 });
 
 // Обработка submit в popupAdd
@@ -135,6 +123,7 @@ formAddCard.addEventListener('submit', () => {
   postNewCards(popupInputPlace.value, popupInputLink.value)
     .then((result) => {
       renderCard(result);
+      closePopup(popupAdd);
     })
     .catch((err) => {
       console.log(err);
@@ -142,8 +131,7 @@ formAddCard.addEventListener('submit', () => {
     .finally(() => {
       renderLoading(popupButtonCard);
     });
-  closePopup(popupAdd);
-  });
+});
 
 // Настройки валидации
 const validationSettings = {
