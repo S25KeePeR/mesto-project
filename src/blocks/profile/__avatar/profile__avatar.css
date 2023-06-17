@@ -1,7 +1,8 @@
 .profile__avatar {
-  grid-area: avatar;
+  /* grid-area: avatar; */
   width: 120px;
   height: 120px;
   border-radius: 50%;
-
+  grid-area: avatar;
+  z-index: -1;
 }

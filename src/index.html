@@ -19,12 +19,16 @@
   <!-- основной часть -->
   <main class="main">
     <!-- блок профиль -->
-    <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/profile/user_001.png')%>" alt="Аватар пользователя">
+    <section class="profile" data-user-id="">
+      <!-- <img class="profile__avatar" src="<%=require('./images/profile/user_001.png')%>" alt="Аватар пользователя"> -->
+      <img class="profile__avatar" src="" alt="Аватар пользователя">
+      <button class="profile__avatar-button"></button>
       <div class="profile__profile-info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <!-- <h1 class="profile__title">Жак-Ив Кусто</h1> -->
+        <h1 class="profile__title"></h1>
         <button class="profile__edit-button" type="button" aria-label="Edit"></button>
-        <p class="profile__subtitle">Исследователь океана</p>
+        <!-- <p class="profile__subtitle">Исследователь океана</p> -->
+        <p class="profile__subtitle"></p>
       </div>
       <button class="profile__add-button" type="button" aria-label="Add"></button>
     </section>
@@ -39,6 +43,25 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
+  <!-- popup редактирование аватарки -->
+  <section class="popup popup_avatar">
+    <div class="popup__container">
+      <h3 class="popup__title">Обновить аватар</h3>
+      <button class="popup__close-btn" type="button" aria-label="Close"></button>
+      <form class="popup__form" name="editAvatar" novalidate>
+        <input
+          class="popup__input popup__input_type_link"
+          id="inputLinkAvatar"
+          name="linkAvatar"
+          type="url"
+          placeholder="Ссылка на картинку"
+          value=""
+        required>
+        <span class="popup__error" id="inputLinkAvatar-error"></span>
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
   <!-- popup редактирование профиля -->
   <section class="popup popup_profile">
     <div class="popup__container">
@@ -119,13 +142,16 @@
   </section>
   <!-- Пустая форма карточки -->
   <template id="card">
-    <li class="element">
+    <li class="element" data-card-id="">
       <img class="element__image" src="#" alt="#">
       <div class="element__caption">
-        <h2 class="element__title">Байкал</h2>
-        <button class="element__like" type="button" aria-label="Like"></button>
+        <h2 class="element__title"></h2>
+        <div>
+          <button class="element__like" type="button" aria-label="Like"></button>
+          <p class="element__likes"></p>
+        </div>
       </div>
-      <button class="element__del-button" type="button" aria-label="Delete"></button>
+      <button class="element__del-button element__del-button_disabled" type="button" aria-label="Delete"></button>
     </li>
   </template>
 </body>
